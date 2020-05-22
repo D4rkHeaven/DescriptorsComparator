@@ -69,7 +69,7 @@ public class Editor implements Mediator {
      * Разнообразные методы общения с компонентами.
      */
     @Override
-    public void addNewNote(Note note) {
+    public void addNewImage(Note note) {
         title.setText("");
         textBox.setText("");
         list.addElement(note);
@@ -139,33 +139,39 @@ public class Editor implements Mediator {
 
     @Override
     public void createGUI() {
-        JFrame notes = new JFrame("Notes");
-        notes.setSize(960, 600);
-        notes.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        JFrame mainFrame = new JFrame("Comparator");
+        mainFrame.setSize(960, 600);
+        mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
         JPanel left = new JPanel();
         left.setBorder(new LineBorder(Color.BLACK));
-        left.setSize(320, 600);
+        left.setSize(480, 600);
         left.setLayout(new BoxLayout(left, BoxLayout.Y_AXIS));
+
         JPanel filterPanel = new JPanel();
         filterPanel.add(new JLabel("Filter:"));
         filter.setColumns(20);
         filterPanel.add(filter);
         filterPanel.setPreferredSize(new Dimension(280, 40));
+
         JPanel listPanel = new JPanel();
         list.setFixedCellWidth(260);
         listPanel.setSize(320, 470);
         JScrollPane scrollPane = new JScrollPane(list);
         scrollPane.setPreferredSize(new Dimension(275, 410));
         listPanel.add(scrollPane);
+
         JPanel buttonPanel = new JPanel();
         add.setPreferredSize(new Dimension(85, 25));
         buttonPanel.add(add);
         del.setPreferredSize(new Dimension(85, 25));
         buttonPanel.add(del);
         buttonPanel.setLayout(new FlowLayout());
+
         left.add(filterPanel);
         left.add(listPanel);
         left.add(buttonPanel);
+
         JPanel right = new JPanel();
         right.setLayout(null);
         right.setSize(640, 600);
@@ -185,11 +191,11 @@ public class Editor implements Mediator {
         right.add(textLabel);
         right.add(textBox);
         right.add(save);
-        notes.setLayout(null);
-        notes.getContentPane().add(left);
-        notes.getContentPane().add(right);
-        notes.setResizable(false);
-        notes.setLocationRelativeTo(null);
-        notes.setVisible(true);
+        mainFrame.setLayout(null);
+        mainFrame.getContentPane().add(left);
+        mainFrame.getContentPane().add(right);
+        mainFrame.setResizable(false);
+        mainFrame.setLocationRelativeTo(null);
+        mainFrame.setVisible(true);
     }
 }

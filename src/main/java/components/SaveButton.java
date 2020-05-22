@@ -3,7 +3,9 @@ package components;
 import mediator.Mediator;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileSystemView;
 import java.awt.event.ActionEvent;
+import java.io.File;
 
 public class SaveButton extends JButton implements Component {
     private Mediator mediator;
@@ -19,7 +21,11 @@ public class SaveButton extends JButton implements Component {
 
     @Override
     protected void fireActionPerformed(ActionEvent actionEvent) {
-        mediator.saveChanges();
+        JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView());
+        int ret1 = fileChooser.showDialog(null, "Сохранить файл");
+        if (ret1 == JFileChooser.APPROVE_OPTION) {
+            File file1 = fileChooser.getSelectedFile();
+        }
     }
 
     @Override

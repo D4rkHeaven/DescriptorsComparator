@@ -1,13 +1,18 @@
 import components.*;
-import mediator.Editor;
-import mediator.Mediator;
+import descriptors.Orb;
+import mediator.*;
+import org.opencv.core.Core;
+import org.opencv.core.Mat;
+import org.opencv.imgcodecs.Imgcodecs;
 
 import javax.swing.*;
 
 public class Main {
-    public static void main(String[] args) {
-        Mediator mediator = new Editor();
+    public static final String IMAGE_PATH = "image.png";
 
+    public static void main(String[] args) {
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        Mediator mediator = new Editor();
         mediator.registerComponent(new Title());
         mediator.registerComponent(new TextBox());
         mediator.registerComponent(new AddButton());
@@ -17,5 +22,10 @@ public class Main {
         mediator.registerComponent(new Filter());
 
         mediator.createGUI();
+
+        Orb orb = new Orb();
+        Mat processedImage = orb.run(Imgcodecs.imread(IMAGE_PATH));
+        ImageHelper imageHelper = new ImageHelper();
+        imageHelper.addImage(processedImage);
     }
 }

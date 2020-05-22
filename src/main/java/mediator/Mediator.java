@@ -8,7 +8,7 @@ import javax.swing.*;
  * Общий интерфейс посредников.
  */
 public interface Mediator {
-    void addNewNote(Note note);
+    void addNewImage(Note note);
 
     void deleteNote();
 
