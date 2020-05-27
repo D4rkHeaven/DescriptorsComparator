@@ -8,25 +8,24 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 
 /**
- * Вспомогательный класс, отвечающий за графический интерфейс
+ * Вспомогательный класс, отвечающий за вывод изображения с особыми точками
  */
 public class ImageHelper extends JFrame {
 
-    private JFrame frame = new JFrame();
-    private JPanel panel = new JPanel();
-    private JScrollPane scrollPane = new JScrollPane(panel);
+    private final JFrame frame = new JFrame();
+    private final JPanel panel = new JPanel();
+    private final JScrollPane scrollPane = new JScrollPane(panel);
 
     public ImageHelper() {
         panel.setLayout(new FlowLayout());
         frame.setSize(960, 600);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         frame.add(scrollPane);
     }
-
     /**
      * добавление входного изображение и отображение окна
      *
-     * @param inputImage
+     * @param inputImage входное изображение
      */
     public void addImage(Mat inputImage) {
 
@@ -50,7 +49,5 @@ public class ImageHelper extends JFrame {
 
         panel.add(label);
         frame.setVisible(true);
-
     }
-
 }

@@ -29,14 +29,12 @@ public class List extends JList<Object> implements Component {
         int index = LIST_MODEL.size() - 1;
         setSelectedIndex(index);
         ensureIndexIsVisible(index);
-        mediator.sendToFilter(LIST_MODEL);
     }
 
     public void deleteElement() {
         int index = this.getSelectedIndex();
         try {
             LIST_MODEL.remove(index);
-            mediator.sendToFilter(LIST_MODEL);
         } catch (ArrayIndexOutOfBoundsException ignored) {
         }
     }
@@ -65,11 +63,7 @@ public class List extends JList<Object> implements Component {
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();
                 }
-                if (list.isSelectionEmpty()) {
-                    mediator.hideElements(true);
-                } else {
-                    mediator.hideElements(false);
-                }
+                mediator.hideElements(list.isSelectionEmpty());
             }
         }
     }

@@ -18,15 +18,14 @@ public class Editor implements Mediator {
     private TextBox textBox;
     private AddButton add;
     private OrbButton orb;
+    private SurfButton surf;
     private DeleteButton del;
     private ImagePanel imagePanel;
     private SaveButton save;
     private List list;
-    private Filter filter;
 
-    private JLabel titleLabel = new JLabel("Title:");
-    private JLabel textLabel = new JLabel("Text:");
-    private JLabel label = new JLabel("Add or select existing image to proceed...");
+    private final JLabel textLabel = new JLabel("Image:");
+    private final JLabel label = new JLabel("Add or select existing image to proceed...");
 
     /**
      * Здесь происходит регистрация компонентов посредником.
@@ -41,14 +40,14 @@ public class Editor implements Mediator {
             case "OrbButton":
                 orb = (OrbButton) component;
                 break;
+            case "SurfButton":
+                surf = (SurfButton) component;
+                break;
             case "ImagePanel":
                 imagePanel = (ImagePanel) component;
                 break;
             case "DeleteButton":
                 del = (DeleteButton) component;
-                break;
-            case "Filter":
-                filter = (Filter) component;
                 break;
             case "List":
                 list = (List) component;
@@ -125,11 +124,6 @@ public class Editor implements Mediator {
     }
 
     @Override
-    public void sendToFilter(ListModel listModel) {
-        filter.setList(listModel);
-    }
-
-    @Override
     public void setElementsList(ListModel list) {
         this.list.setModel(list);
         this.list.repaint();
@@ -137,10 +131,9 @@ public class Editor implements Mediator {
 
     @Override
     public void hideElements(boolean flag) {
-        titleLabel.setVisible(!flag);
         textLabel.setVisible(!flag);
-        title.setVisible(!flag);
         orb.setVisible(!flag);
+        surf.setVisible(!flag);
         imagePanel.setVisible(!flag);
         save.setVisible(!flag);
         label.setVisible(flag);
@@ -180,14 +173,11 @@ public class Editor implements Mediator {
         right.setLocation(320, 0);
         right.setBorder(new LineBorder(Color.BLACK));
 
-        titleLabel.setBounds(20, 4, 50, 20);
-        title.setBounds(60, 5, 555, 20);
         textLabel.setBounds(20, 4, 50, 130);
-        textBox.setBorder(new LineBorder(Color.DARK_GRAY));
-        textBox.setBounds(20, 80, 595, 410);
         imagePanel.setBounds(20, 80, 595, 410);
-        orb.setBounds(180, 535, 80, 25);
-        save.setBounds(270, 535, 80, 25);
+        orb.setBounds(180, 495, 80, 25);
+        surf.setBounds(270, 495, 80, 25);
+        save.setBounds(360, 495, 80, 25);
         label.setFont(new Font("Verdana", Font.PLAIN, 22));
         label.setBounds(100, 240, 500, 100);
 
@@ -195,6 +185,7 @@ public class Editor implements Mediator {
         right.add(textLabel);
         right.add(imagePanel);
         right.add(orb);
+        right.add(surf);
         right.add(save);
         mainFrame.setLayout(null);
         mainFrame.getContentPane().add(left);
