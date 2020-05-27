@@ -19,6 +19,7 @@ public class Editor implements Mediator {
     private AddButton add;
     private OrbButton orb;
     private DeleteButton del;
+    private ImagePanel imagePanel;
     private SaveButton save;
     private List list;
     private Filter filter;
@@ -39,6 +40,9 @@ public class Editor implements Mediator {
                 break;
             case "OrbButton":
                 orb = (OrbButton) component;
+                break;
+            case "ImagePanel":
+                imagePanel = (ImagePanel) component;
                 break;
             case "DeleteButton":
                 del = (DeleteButton) component;
@@ -136,8 +140,8 @@ public class Editor implements Mediator {
         titleLabel.setVisible(!flag);
         textLabel.setVisible(!flag);
         title.setVisible(!flag);
-        textBox.setVisible(!flag);
         orb.setVisible(!flag);
+        imagePanel.setVisible(!flag);
         save.setVisible(!flag);
         label.setVisible(flag);
     }
@@ -181,6 +185,7 @@ public class Editor implements Mediator {
         textLabel.setBounds(20, 4, 50, 130);
         textBox.setBorder(new LineBorder(Color.DARK_GRAY));
         textBox.setBounds(20, 80, 595, 410);
+        imagePanel.setBounds(20, 80, 595, 410);
         orb.setBounds(180, 535, 80, 25);
         save.setBounds(270, 535, 80, 25);
         label.setFont(new Font("Verdana", Font.PLAIN, 22));
@@ -188,7 +193,7 @@ public class Editor implements Mediator {
 
         right.add(label);
         right.add(textLabel);
-        right.add(textBox);
+        right.add(imagePanel);
         right.add(orb);
         right.add(save);
         mainFrame.setLayout(null);

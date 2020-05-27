@@ -5,9 +5,9 @@ import org.opencv.core.MatOfKeyPoint;
 import org.opencv.features2d.Features2d;
 import org.opencv.features2d.ORB;
 
-public class Orb {
+public class Sift {
     /**
-     * Реализация дескриптора ORB
+     * Реализация дескриптора SIFT
      *
      * @param input входное изображение
      * @return обработанное изображение

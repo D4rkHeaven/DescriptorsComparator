@@ -5,9 +5,9 @@ import org.opencv.core.MatOfKeyPoint;
 import org.opencv.features2d.Features2d;
 import org.opencv.features2d.ORB;
 
-public class Orb {
+public class Surf {
     /**
-     * Реализация дескриптора ORB
+     * Реализация дескриптора SURF
      *
      * @param input входное изображение
      * @return обработанное изображение

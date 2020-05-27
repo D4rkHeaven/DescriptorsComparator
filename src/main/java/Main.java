@@ -1,9 +1,6 @@
 import components.*;
-import descriptors.Orb;
 import mediator.*;
 import org.opencv.core.Core;
-import org.opencv.core.Mat;
-import org.opencv.imgcodecs.Imgcodecs;
 
 import javax.swing.*;
 
@@ -20,6 +17,7 @@ public class Main {
         mediator.registerComponent(new DeleteButton());
         mediator.registerComponent(new SaveButton());
         mediator.registerComponent(new List(new DefaultListModel<>()));
+        mediator.registerComponent(new ImagePanel());
         mediator.registerComponent(new Filter());
 
         mediator.createGUI();
