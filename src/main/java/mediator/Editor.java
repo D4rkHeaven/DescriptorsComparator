@@ -17,6 +17,7 @@ public class Editor implements Mediator {
     private Title title;
     private TextBox textBox;
     private AddButton add;
+    private OrbButton orb;
     private DeleteButton del;
     private SaveButton save;
     private List list;
@@ -24,7 +25,7 @@ public class Editor implements Mediator {
 
     private JLabel titleLabel = new JLabel("Title:");
     private JLabel textLabel = new JLabel("Text:");
-    private JLabel label = new JLabel("Add or select existing note to proceed...");
+    private JLabel label = new JLabel("Add or select existing image to proceed...");
 
     /**
      * Здесь происходит регистрация компонентов посредником.
@@ -35,6 +36,9 @@ public class Editor implements Mediator {
         switch (component.getName()) {
             case "AddButton":
                 add = (AddButton) component;
+                break;
+            case "OrbButton":
+                orb = (OrbButton) component;
                 break;
             case "DeleteButton":
                 del = (DeleteButton) component;
@@ -133,6 +137,7 @@ public class Editor implements Mediator {
         textLabel.setVisible(!flag);
         title.setVisible(!flag);
         textBox.setVisible(!flag);
+        orb.setVisible(!flag);
         save.setVisible(!flag);
         label.setVisible(flag);
     }
@@ -145,14 +150,8 @@ public class Editor implements Mediator {
 
         JPanel left = new JPanel();
         left.setBorder(new LineBorder(Color.BLACK));
-        left.setSize(480, 600);
+        left.setSize(320, 600);
         left.setLayout(new BoxLayout(left, BoxLayout.Y_AXIS));
-
-        JPanel filterPanel = new JPanel();
-        filterPanel.add(new JLabel("Filter:"));
-        filter.setColumns(20);
-        filterPanel.add(filter);
-        filterPanel.setPreferredSize(new Dimension(280, 40));
 
         JPanel listPanel = new JPanel();
         list.setFixedCellWidth(260);
@@ -168,7 +167,6 @@ public class Editor implements Mediator {
         buttonPanel.add(del);
         buttonPanel.setLayout(new FlowLayout());
 
-        left.add(filterPanel);
         left.add(listPanel);
         left.add(buttonPanel);
 
@@ -177,19 +175,21 @@ public class Editor implements Mediator {
         right.setSize(640, 600);
         right.setLocation(320, 0);
         right.setBorder(new LineBorder(Color.BLACK));
+
         titleLabel.setBounds(20, 4, 50, 20);
         title.setBounds(60, 5, 555, 20);
         textLabel.setBounds(20, 4, 50, 130);
         textBox.setBorder(new LineBorder(Color.DARK_GRAY));
         textBox.setBounds(20, 80, 595, 410);
+        orb.setBounds(180, 535, 80, 25);
         save.setBounds(270, 535, 80, 25);
         label.setFont(new Font("Verdana", Font.PLAIN, 22));
         label.setBounds(100, 240, 500, 100);
+
         right.add(label);
-        right.add(titleLabel);
-        right.add(title);
         right.add(textLabel);
         right.add(textBox);
+        right.add(orb);
         right.add(save);
         mainFrame.setLayout(null);
         mainFrame.getContentPane().add(left);
