@@ -1,6 +1,7 @@
 package components;
 
 import descriptors.Orb;
+import descriptors.Surf;
 import mediator.Mediator;
 import org.opencv.core.Mat;
 import org.opencv.imgcodecs.Imgcodecs;
@@ -10,7 +11,7 @@ import java.awt.event.ActionEvent;
 
 public class SurfButton extends JButton implements Component {
 
-    public static final String IMAGE_PATH = "src/main/resources/image.png";
+    public static final String IMAGE_PATH = "src/main/resources/home.png";
 
     private Mediator mediator;
 
@@ -25,8 +26,8 @@ public class SurfButton extends JButton implements Component {
 
     @Override
     protected void fireActionPerformed(ActionEvent actionEvent) {
-        Orb orb = new Orb();
-        Mat processedImage = orb.run(Imgcodecs.imread(IMAGE_PATH));
+        Surf surf = new Surf();
+        Mat processedImage = surf.run(Imgcodecs.imread(IMAGE_PATH));
         ImageHelper imageHelper = new ImageHelper();
         imageHelper.addImage(processedImage);
     }

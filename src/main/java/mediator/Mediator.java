@@ -3,16 +3,17 @@ package mediator;
 import components.Component;
 
 import javax.swing.*;
+import java.io.File;
 
 /**
  * Общий интерфейс посредников.
  */
 public interface Mediator {
-    void addNewImage(Note note);
+    void addNewImage(Image image);
 
     void deleteNote();
 
-    void getInfoFromList(Note note);
+    void getInfoFromList(Image image);
 
     void saveChanges();
 

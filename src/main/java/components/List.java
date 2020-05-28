@@ -1,7 +1,7 @@
 package components;
 
 import mediator.Mediator;
-import mediator.Note;
+import mediator.Image;
 
 import javax.swing.*;
 
@@ -24,8 +24,8 @@ public class List extends JList<Object> implements Component {
         this.mediator = mediator;
     }
 
-    public void addElement(Note note) {
-        LIST_MODEL.addElement(note);
+    public void addElement(Image image) {
+        LIST_MODEL.addElement(image);
         int index = LIST_MODEL.size() - 1;
         setSelectedIndex(index);
         ensureIndexIsVisible(index);
@@ -39,8 +39,8 @@ public class List extends JList<Object> implements Component {
         }
     }
 
-    public Note getCurrentElement() {
-        return (Note) getSelectedValue();
+    public Image getCurrentElement() {
+        return (Image) getSelectedValue();
     }
 
     @Override

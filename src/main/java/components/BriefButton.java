@@ -1,6 +1,6 @@
 package components;
 
-import descriptors.Orb;
+import descriptors.Brief;
 import mediator.Mediator;
 import org.opencv.core.Mat;
 import org.opencv.imgcodecs.Imgcodecs;
@@ -8,14 +8,14 @@ import org.opencv.imgcodecs.Imgcodecs;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
-public class OrbButton extends JButton implements Component {
+public class BriefButton extends JButton implements Component {
 
     public static final String IMAGE_PATH = "src/main/resources/home.png";
 
     private Mediator mediator;
 
-    public OrbButton() {
-        super("Orb");
+    public BriefButton() {
+        super("Brief");
     }
 
     @Override
@@ -25,14 +25,14 @@ public class OrbButton extends JButton implements Component {
 
     @Override
     protected void fireActionPerformed(ActionEvent actionEvent) {
-        Orb orb = new Orb();
-        Mat processedImage = orb.run(Imgcodecs.imread(IMAGE_PATH));
+        Brief brief = new Brief();
+        Mat processedImage = brief.run(Imgcodecs.imread(IMAGE_PATH));
         ImageHelper imageHelper = new ImageHelper();
         imageHelper.addImage(processedImage);
     }
 
     @Override
     public String getName() {
-        return "OrbButton";
+        return "BriefButton";
     }
 }

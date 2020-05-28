@@ -1,6 +1,7 @@
 package components;
 
 import descriptors.Orb;
+import descriptors.Sift;
 import mediator.Mediator;
 import org.opencv.core.Mat;
 import org.opencv.imgcodecs.Imgcodecs;
@@ -10,7 +11,7 @@ import java.awt.event.ActionEvent;
 
 public class SiftButton extends JButton implements Component {
 
-    public static final String IMAGE_PATH = "src/main/resources/image.png";
+    public static final String IMAGE_PATH = "src/main/resources/home.png";
 
     private Mediator mediator;
 
@@ -25,8 +26,8 @@ public class SiftButton extends JButton implements Component {
 
     @Override
     protected void fireActionPerformed(ActionEvent actionEvent) {
-        Orb orb = new Orb();
-        Mat processedImage = orb.run(Imgcodecs.imread(IMAGE_PATH));
+        Sift sift = new Sift();
+        Mat processedImage = sift.run(Imgcodecs.imread(IMAGE_PATH));
         ImageHelper imageHelper = new ImageHelper();
         imageHelper.addImage(processedImage);
     }

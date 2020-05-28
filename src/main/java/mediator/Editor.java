@@ -19,9 +19,10 @@ public class Editor implements Mediator {
     private AddButton add;
     private OrbButton orb;
     private SurfButton surf;
+    private SiftButton sift;
+    private BriefButton brief;
     private DeleteButton del;
     private ImagePanel imagePanel;
-    private SiftButton sift;
     private List list;
 
     private final JLabel textLabel = new JLabel("Image:");
@@ -43,6 +44,12 @@ public class Editor implements Mediator {
             case "SurfButton":
                 surf = (SurfButton) component;
                 break;
+            case "SiftButton":
+                sift = (SiftButton) component;
+                break;
+            case "BriefButton":
+                brief = (BriefButton) component;
+                break;
             case "ImagePanel":
                 imagePanel = (ImagePanel) component;
                 break;
@@ -52,16 +59,13 @@ public class Editor implements Mediator {
             case "List":
                 list = (List) component;
                 this.list.addListSelectionListener(listSelectionEvent -> {
-                    Note note = (Note) list.getSelectedValue();
-                    if (note != null) {
-                        getInfoFromList(note);
+                    Image image = (Image) list.getSelectedValue();
+                    if (image != null) {
+                        getInfoFromList(image);
                     } else {
                         clear();
                     }
                 });
-                break;
-            case "SiftButton":
-                sift = (SiftButton) component;
                 break;
             case "TextBox":
                 textBox = (TextBox) component;
@@ -76,10 +80,10 @@ public class Editor implements Mediator {
      * Разнообразные методы общения с компонентами.
      */
     @Override
-    public void addNewImage(Note note) {
-        title.setText("");
+    public void addNewImage(Image image) {
+        title.setText(image.getName());
         textBox.setText("");
-        list.addElement(note);
+        list.addElement(image);
     }
 
     @Override
@@ -88,17 +92,17 @@ public class Editor implements Mediator {
     }
 
     @Override
-    public void getInfoFromList(Note note) {
-        title.setText(note.getName().replace('*', ' '));
-        textBox.setText(note.getText());
+    public void getInfoFromList(Image image) {
+        title.setText(image.getName().replace('*', ' '));
+        textBox.setText(image.getPath());
     }
 
     @Override
     public void saveChanges() {
         try {
-            Note note = (Note) list.getSelectedValue();
-            note.setName(title.getText());
-            note.setText(textBox.getText());
+            Image image = (Image) list.getSelectedValue();
+            image.setName(title.getText());
+            image.setPath(textBox.getText());
             list.repaint();
         } catch (NullPointerException ignored) {
         }
@@ -107,10 +111,10 @@ public class Editor implements Mediator {
     @Override
     public void markNote() {
         try {
-            Note note = list.getCurrentElement();
-            String name = note.getName();
+            Image image = list.getCurrentElement();
+            String name = image.getName();
             if (!name.endsWith("*")) {
-                note.setName(note.getName() + "*");
+                image.setName(image.getName() + "*");
             }
             list.repaint();
         } catch (NullPointerException ignored) {
@@ -134,8 +138,9 @@ public class Editor implements Mediator {
         textLabel.setVisible(!flag);
         orb.setVisible(!flag);
         surf.setVisible(!flag);
-        imagePanel.setVisible(!flag);
         sift.setVisible(!flag);
+        brief.setVisible(!flag);
+        imagePanel.setVisible(!flag);
         label.setVisible(flag);
     }
 
@@ -175,9 +180,10 @@ public class Editor implements Mediator {
 
         textLabel.setBounds(20, 4, 50, 130);
         imagePanel.setBounds(20, 80, 595, 410);
-        orb.setBounds(180, 495, 80, 25);
-        surf.setBounds(270, 495, 80, 25);
-        sift.setBounds(360, 495, 80, 25);
+        orb.setBounds(140, 495, 80, 25);
+        surf.setBounds(230, 495, 80, 25);
+        sift.setBounds(320, 495, 80, 25);
+        brief.setBounds(410, 495, 80, 25);
         label.setFont(new Font("Verdana", Font.PLAIN, 22));
         label.setBounds(100, 240, 500, 100);
 
@@ -187,6 +193,7 @@ public class Editor implements Mediator {
         right.add(orb);
         right.add(surf);
         right.add(sift);
+        right.add(brief);
         mainFrame.setLayout(null);
         mainFrame.getContentPane().add(left);
         mainFrame.getContentPane().add(right);

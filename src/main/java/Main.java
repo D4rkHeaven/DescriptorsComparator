@@ -14,8 +14,9 @@ public class Main {
         mediator.registerComponent(new AddButton());
         mediator.registerComponent(new OrbButton());
         mediator.registerComponent(new SurfButton());
-        mediator.registerComponent(new DeleteButton());
+        mediator.registerComponent(new BriefButton());
         mediator.registerComponent(new SiftButton());
+        mediator.registerComponent(new DeleteButton());
         mediator.registerComponent(new List(new DefaultListModel<>()));
         mediator.registerComponent(new ImagePanel());
 

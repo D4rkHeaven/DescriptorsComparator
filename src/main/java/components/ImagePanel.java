@@ -16,7 +16,7 @@ public class ImagePanel extends JPanel implements Component {
 
     public ImagePanel() {
         try {
-            image = ImageIO.read(new File("src/main/resources/image.png"));
+            image = ImageIO.read(new File("src/main/resources/home.png"));
         } catch (IOException ex) {
             System.out.println("Something went wrong.");
         }
