@@ -21,7 +21,7 @@ public class Editor implements Mediator {
     private SurfButton surf;
     private DeleteButton del;
     private ImagePanel imagePanel;
-    private SaveButton save;
+    private SiftButton sift;
     private List list;
 
     private final JLabel textLabel = new JLabel("Image:");
@@ -60,8 +60,8 @@ public class Editor implements Mediator {
                     }
                 });
                 break;
-            case "SaveButton":
-                save = (SaveButton) component;
+            case "SiftButton":
+                sift = (SiftButton) component;
                 break;
             case "TextBox":
                 textBox = (TextBox) component;
@@ -135,7 +135,7 @@ public class Editor implements Mediator {
         orb.setVisible(!flag);
         surf.setVisible(!flag);
         imagePanel.setVisible(!flag);
-        save.setVisible(!flag);
+        sift.setVisible(!flag);
         label.setVisible(flag);
     }
 
@@ -177,7 +177,7 @@ public class Editor implements Mediator {
         imagePanel.setBounds(20, 80, 595, 410);
         orb.setBounds(180, 495, 80, 25);
         surf.setBounds(270, 495, 80, 25);
-        save.setBounds(360, 495, 80, 25);
+        sift.setBounds(360, 495, 80, 25);
         label.setFont(new Font("Verdana", Font.PLAIN, 22));
         label.setBounds(100, 240, 500, 100);
 
@@ -186,7 +186,7 @@ public class Editor implements Mediator {
         right.add(imagePanel);
         right.add(orb);
         right.add(surf);
-        right.add(save);
+        right.add(sift);
         mainFrame.setLayout(null);
         mainFrame.getContentPane().add(left);
         mainFrame.getContentPane().add(right);
