@@ -18,7 +18,7 @@ public class ImageHelper extends JFrame {
 
     public ImageHelper() {
         panel.setLayout(new FlowLayout());
-        frame.setSize(960, 600);
+        frame.setSize(640, 450);
         frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         frame.add(scrollPane);
     }

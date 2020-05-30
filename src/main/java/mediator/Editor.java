@@ -178,8 +178,8 @@ public class Editor implements Mediator {
         right.setLocation(320, 0);
         right.setBorder(new LineBorder(Color.BLACK));
 
-        textLabel.setBounds(20, -50, 50, 130);
-        imagePanel.setBounds(20, 25, 595, 410);
+       // textLabel.setBounds(20, -50, 50, 130);
+        imagePanel.setBounds(20, 5, 590, 410);
         orb.setBounds(140, 495, 80, 25);
         surf.setBounds(230, 495, 80, 25);
         sift.setBounds(320, 495, 80, 25);
@@ -188,7 +188,7 @@ public class Editor implements Mediator {
         label.setBounds(100, 240, 500, 100);
 
         right.add(label);
-        right.add(textLabel);
+       // right.add(textLabel);
         right.add(imagePanel);
         right.add(orb);
         right.add(surf);

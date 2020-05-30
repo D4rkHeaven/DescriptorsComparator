@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 
 public class OrbButton extends JButton implements Component {
 
-    public static final String IMAGE_PATH = "src/main/resources/home.png";
+    public static final String IMAGE_PATH = "src/main/resources/landscape-1.jpg";
 
     private Mediator mediator;
 
