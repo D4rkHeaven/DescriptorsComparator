@@ -32,6 +32,7 @@ public class ImagePanel extends JPanel implements Component {
     public void setMediator(Mediator mediator) {
         this.mediator = mediator;
     }
+
     @Override
     public String getName() {
         return "ImagePanel";

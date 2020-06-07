@@ -1,5 +1,6 @@
 package components;
 
+import mediator.Mediator;
 import org.opencv.core.Mat;
 
 import javax.swing.*;
@@ -10,8 +11,9 @@ import java.awt.image.DataBufferByte;
 /**
  * Вспомогательный класс, отвечающий за вывод изображения с особыми точками
  */
-public class ImageHelper extends JFrame {
+public class ImageHelper extends JFrame implements Component {
 
+    private Mediator mediator;
     private final JFrame frame = new JFrame();
     private final JPanel panel = new JPanel();
     private final JScrollPane scrollPane = new JScrollPane(panel);
@@ -22,6 +24,7 @@ public class ImageHelper extends JFrame {
         frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         frame.add(scrollPane);
     }
+
     /**
      * добавление входного изображение и отображение окна
      *
@@ -49,5 +52,10 @@ public class ImageHelper extends JFrame {
 
         panel.add(label);
         frame.setVisible(true);
+    }
+
+    @Override
+    public void setMediator(Mediator mediator) {
+        this.mediator = mediator;
     }
 }

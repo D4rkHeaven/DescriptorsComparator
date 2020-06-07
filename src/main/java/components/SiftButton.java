@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 
 public class SiftButton extends JButton implements Component {
 
-    public static final String IMAGE_PATH = "src/main/resources/home.png";
+    public static final String IMAGE_PATH = "src/main/resources/face-5.jpg";
 
     private Mediator mediator;
 
